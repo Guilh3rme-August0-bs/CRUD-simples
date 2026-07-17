@@ -35,21 +35,37 @@ app.get('/', (req, res) => {
 //consultar banco
 //url: /search?name={valor}
 app.get('/search', async (req, res) => {
+
+    /* remover caracteres que possam quebrar a busca, já que o método find usa regex 
+    para encontrar correspondências parciais */
+    const escapeRegex = (value) => { return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') }
+    const term = escapeRegex(req.query.term || '')
+
     //filtrar resultados da busca pelo nome
-    const search = User.find({ name: req.query.name })
+    const search = User.find({
+        //'$or' faz com que o valor buscado satisfaça pelo menos uma dos campos
+        /* $options: 'i' (case-insensitive) desconsidera letras maiúsculas e minúsculas 
+           como critérios de busca */
+        $or: [
+            { name: { $regex: term, $options: 'i' } },
+            { email: { $regex: term, $options: 'i' } },
+            { phone: { $regex: term, $options: 'i' } },
+            { age: { $regex: term, $options: 'i' } }
+        ]
+    }, 'email name phone age')
     try {
         //disparar consulta no banco com o método "exec()"
         const results = await search.exec()
-        results.length === 0 
-        ? res.send('nenhum resultado encontrado') 
-        : res.json(results)
+        results.length === 0
+            ? res.send('nenhum resultado encontrado')
+            : res.json(results)
 
     } catch (error) { `Erro ao buscar nome: ${error}` }
 
 })
 
 //criar usuário
-app.post('/users', async (req, res) => {
+app.post('/insert', async (req, res) => {
 
     //consulta para checar existência do email
     const checkEmail = User.find({ email: req.body.email })
