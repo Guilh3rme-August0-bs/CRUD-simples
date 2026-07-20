@@ -2,7 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import ora from 'ora';
-import User from './User.js';
+import User from './models/User.js';
 
 dotenv.config();
 
