@@ -13,7 +13,9 @@ export const Table = ({ data = [] }) => {
                     </thead>
                     <tbody>
                         <tr className="hover:bg-gray-50 transition-colors">
-                            <td className="px-6 py-4 text-base">Sem dados</td>
+                            <td/>
+                            <td className="px-6 py-4 text-base flex justify-center">Sem dados</td>
+                            <td/>
                         </tr>
                     </tbody>
                 </table>
