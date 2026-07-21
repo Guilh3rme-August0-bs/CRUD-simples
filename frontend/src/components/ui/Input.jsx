@@ -3,7 +3,7 @@ export const Input = ({ Name }) => {
 
         <div className="flex flex-col p-8">
             <label htmlFor={Name}>{Name}</label>
-            <input name={Name} type="text" className="bg-gray-50 text-base text-gray-800 font-semibold border-b border-gray-200" />
+            <input name={Name} type="text" className="bg-gray-200 p-2 text-base text-gray-800 font-semibold border-b border-[#1d7b4b]" />
         </div>
     )
 }

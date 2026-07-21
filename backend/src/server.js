@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import ora from 'ora';
 import User from './models/User.js';
 
@@ -9,6 +10,7 @@ dotenv.config();
 const PORT = 3000;
 const app = express();
 
+app.use(cors())
 app.use(express.json());
 
 const conectarBanco = async () => {
@@ -43,7 +45,7 @@ app.get('/search', async (req, res) => {
     try {
         const results = await search.exec()
         results.length === 0
-            ? res.send('nenhum resultado encontrado')
+            ? res.send({"erro": "nenhum resultado encontrado"})
             : res.json(results)
 
     } catch (error) { `Erro ao buscar nome: ${error}` }
