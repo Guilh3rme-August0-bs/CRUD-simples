@@ -23,11 +23,11 @@ export const Home = () => {
                 <SearchBar
                     searchTerm={inputValue}
                     inputChange={(e) => {
-                        setInputValue(e.target.value)   
+                        setInputValue(e.target.value)
                     }}
                     event={(e) => {
                         if (e.key === 'Enter') {
-                           carregarDados(inputValue)
+                            carregarDados(inputValue)
                         }
                     }}
                     click={() => carregarDados(inputValue)}
