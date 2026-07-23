@@ -3,7 +3,7 @@ import { Button } from "../components/ui/Button"
 import { createUser } from "../services/userService"
 import { useState } from "react"
 
-export const Form = () => {
+export const Form = ({ updateValueFunction }) => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [age, setAge] = useState('')
@@ -22,18 +22,24 @@ export const Form = () => {
         setPhone(formatPhone(e.target.value))
     }
 
-    const saveUser = () => {
-        createUser({
+    const saveUser = async () => {
+        const created = await createUser({
             name,
             email,
             age,
             phone: phone.replace(/\D/g, '')
         })
 
+        if (!created) return
+
         setName('')
         setEmail('')
         setAge('')
         setPhone('')
+
+        if (updateValueFunction) {
+            await updateValueFunction()
+        }
     }
 
     return (

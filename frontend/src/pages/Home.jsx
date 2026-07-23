@@ -9,28 +9,27 @@ export const Home = () => {
     const [inputValue, setInputValue] = useState('')
 
     async function carregarDados(term) {
-        const dados = await getData({ term: term })
+        const dados = await getData({ term })
         setUsuarios(dados)
     }
+
     useEffect(() => {
-        carregarDados("")
-    }, [])
+        carregarDados(inputValue)
+    }, [inputValue])
+
+    const refreshUsers = async () => {
+        await carregarDados(inputValue)
+    }
 
     return (
         <div className="flex justify-center">
             <div>
-                <Form />
+                <Form updateValueFunction={refreshUsers} />
                 <SearchBar
                     searchTerm={inputValue}
                     inputChange={(e) => {
                         setInputValue(e.target.value)
                     }}
-                    event={(e) => {
-                        if (e.key === 'Enter') {
-                            carregarDados(inputValue)
-                        }
-                    }}
-                    click={() => carregarDados(inputValue)}
                 />
                 <Table data={usuarios} />
             </div>

@@ -1,8 +1,7 @@
 const url = `http://localhost:3000`
 
 export async function getData({ term }) {
-
-    const response = await fetch(`${url}/search?term=${term}`)
+    const response = await fetch(`${url}/search?term=${encodeURIComponent(term ?? "")}`)
     const data = await response.json()
 
     if (Array.isArray(data)) {
@@ -14,15 +13,14 @@ export async function getData({ term }) {
 
 export async function createUser({ name, email, age, phone }) {
     try {
-
-        if (name === '') {
+        if (name.trim() === '') {
             alert('Insira um nome!')
-            return
+            return false
         }
 
-        if (email === '') {
+        if (email.trim() === '') {
             alert('Insira um e-mail!')
-            return
+            return false
         }
 
         await fetch(`${url}/insert`, {
@@ -31,14 +29,17 @@ export async function createUser({ name, email, age, phone }) {
                 "Content-type": "application/json"
             },
             body: JSON.stringify({
-                name: name,
-                email: email,
-                age: age,
-                phone: phone
+                name,
+                email,
+                age,
+                phone
             })
         })
+
         alert(`Usuário ${name} cadastrado!`)
+        return true
     } catch (error) {
         console.log(error)
+        return false
     }
 }
