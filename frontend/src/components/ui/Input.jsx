@@ -1,7 +1,7 @@
 export const Input = ({ inputName, inputValue, inputType, inputChange }) => {
     return (
 
-        <div className="flex flex-col p-6">
+        <div className="flex flex-col p-6 max-[599px]:p-1">
             <label htmlFor={inputName}>{inputName}</label>
             <input name={inputName} type={inputType} value={inputValue}
                 onChange={inputChange}

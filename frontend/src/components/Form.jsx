@@ -43,7 +43,7 @@ export const Form = ({ updateValueFunction }) => {
     }
 
     return (
-        <div className="flex justify-center items-center gap-1 mb-10 mt-10 w-full overflow-x-auto rounded-lg border border-gray-200 shadow-sm">
+        <div className="flex max-[800px]:flex-col mb-1 mt-1 min-[700px]:flex-row justify-center items-center gap-1 mb-10 mt-10 overflow-x-auto rounded-lg border border-gray-200 shadow-sm">
             <Input inputName="Nome" inputType="text" inputValue={name} inputChange={(e) => setName(e.target.value)} />
             <Input inputName="E-mail" inputType="text" inputValue={email} inputChange={(e) => setEmail(e.target.value)} />
             <Input inputName="Idade" inputType="number" inputValue={age} inputChange={(e) => setAge(e.target.value)} />

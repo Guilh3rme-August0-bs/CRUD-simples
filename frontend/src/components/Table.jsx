@@ -1,4 +1,10 @@
+import { SquarePen, Trash2 } from 'lucide-react';
+import { useState } from 'react';
+import { TableRow } from './TableRow';
+
 export const Table = ({ data = [], maxHeight = '50vh' }) => {
+
+    const [selectedId, setSelectedId] = useState(null)
     const hasData = Array.isArray(data) && data.length > 0
 
     return (
@@ -13,6 +19,8 @@ export const Table = ({ data = [], maxHeight = '50vh' }) => {
                                 <th className="px-6 py-3 font-sans font-semibold text-white text-lg">E-mail</th>
                                 <th className="px-6 py-3 font-sans font-semibold text-white text-lg">Idade</th>
                                 <th className="px-6 py-3 font-sans font-semibold text-white text-lg">N° de Telefone</th>
+                                <th className="px-6 py-3 font-sans font-semibold text-white text-lg"></th>
+                                <th className="px-6 py-3 font-sans font-semibold text-white text-lg"></th>
                             </tr>
                         </thead>
 
@@ -24,14 +32,10 @@ export const Table = ({ data = [], maxHeight = '50vh' }) => {
                                     </td>
                                 </tr>
                             ) : (
-                                data.map((usuario) => (
-                                    <tr key={usuario._id} className="hover:bg-gray-50 transition-colors">
-                                        <td className="px-6 py-4 text-base">{usuario._id}</td>
-                                        <td className="px-6 py-4 text-base">{usuario.name}</td>
-                                        <td className="px-6 py-4 text-base">{usuario.email}</td>
-                                        <td className="px-6 py-4 text-base">{usuario.age}</td>
-                                        <td className="px-6 py-4 text-base">{usuario.phone}</td>
-                                    </tr>
+                                data.map((userData) => (
+                                    <TableRow usuario={userData} key={userData._id} 
+                                    rowClick={() => {setSelectedId(userData._id)
+                                    }} selectedId={selectedId} />
                                 ))
                             )}
                         </tbody>

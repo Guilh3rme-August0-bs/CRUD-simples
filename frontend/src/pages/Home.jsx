@@ -23,7 +23,7 @@ export const Home = () => {
 
     return (
         <div className="flex justify-center">
-            <div>
+            <div className="min-w-20">
                 <Form updateValueFunction={refreshUsers} />
                 <SearchBar
                     searchTerm={inputValue}

@@ -4,7 +4,7 @@ import { Button } from './Button'
 export const SearchBar = ({ searchTerm, inputChange }) => {
 
     return (
-        <div className="flex justify-center items-center gap-4 mb-10 mt-10 w-full p-6 overflow-x-auto rounded-lg border border-gray-200 shadow-sm">
+        <div className="flex justify-center items-center gap-4 mb-6 mt-6 w-full p-6 overflow-x-auto rounded-lg border border-gray-200 shadow-sm">
             <Search color="#000000" />
             <input className="bg-gray-200 rounded-lg w-full p-2"
                 name="search"
