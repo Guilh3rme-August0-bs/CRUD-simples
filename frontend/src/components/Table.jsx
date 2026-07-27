@@ -2,9 +2,8 @@ import { SquarePen, Trash2 } from 'lucide-react';
 import { useState } from 'react';
 import { TableRow } from './TableRow';
 
-export const Table = ({ data = [], maxHeight = '50vh' }) => {
+export const Table = ({ data = [], maxHeight = '50vh', selectedId, setSelectedId }) => {
 
-    const [selectedId, setSelectedId] = useState(null)
     const hasData = Array.isArray(data) && data.length > 0
 
     return (

@@ -43,3 +43,38 @@ export async function createUser({ name, email, age, phone }) {
         return false
     }
 }
+export async function editUser({ id, name, email, age, phone }) {
+    try {
+        if (name.trim() === '') {
+            alert('Insira um nome!')
+            return false
+        }
+
+        if (email.trim() === '') {
+            alert('Insira um e-mail!')
+            return false
+        }
+
+        await fetch(`${url}/update`, {
+            method: "PATCH",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                id,
+                data: {
+                    name: name,
+                    email: email,
+                    age: age,
+                    phone: phone
+                }
+            })
+        })
+
+        alert(`Usuário atualizado!`)
+        return true
+    } catch (error) {
+        console.log(error)
+        return false
+    }
+}
