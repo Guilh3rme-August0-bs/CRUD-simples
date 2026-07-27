@@ -1,5 +1,6 @@
 import { Input } from "../components/ui/Input"
 import { Button } from "../components/ui/Button"
+import { CircleX } from 'lucide-react';
 import { createUser, editUser } from "../services/userService"
 import { useEffect, useState } from "react"
 
@@ -64,7 +65,7 @@ export const Form = ({ updateValueFunction, isEditing, setIsEditing, selectedUse
             name,
             email,
             age,
-            phone: phone.replace(/\D/g, '')
+            phone
         })
 
         if (!edited) return
@@ -81,18 +82,20 @@ export const Form = ({ updateValueFunction, isEditing, setIsEditing, selectedUse
     }
 
     return (
-        <div className="flex max-[800px]:flex-col mb-1 mt-1 min-[700px]:flex-row justify-center items-center gap-1 mb-10 mt-10 overflow-x-auto rounded-lg border border-gray-200 shadow-sm">
+        <div className="max-[800px]: flex flex-col p-4 min-[700px]:flex-row mb-10 mt-10 justify-center items-center gap-1 overflow-x-auto rounded-lg border border-gray-200 shadow-sm">
             <Input inputName="Nome" inputType="text" inputValue={name} inputChange={(e) => setName(e.target.value)} />
             <Input inputName="E-mail" inputType="text" inputValue={email} inputChange={(e) => setEmail(e.target.value)} />
             <Input inputName="Idade" inputType="number" inputValue={age} inputChange={(e) => setAge(e.target.value)} />
             <Input inputName="N° de telefone" inputType="tel" inputValue={phone} inputChange={handlePhoneChange} />
             {isEditing ? (
-                <>
-                    <Button buttonClick={updateUser}>Editar</Button>
-                    <Button buttonClick={() => {setIsEditing(false)}}>Cancelar</Button>
-                </>
+                <div className="flex flex-row items-center">
+                    <Button variant="primary" buttonClick={updateUser}>Atualizar</Button>
+                    <Button variant="secondary" buttonClick={() => { setIsEditing(false) }}>
+                        <CircleX />
+                    </Button>
+                </div>
             ) : (
-                <Button buttonClick={saveUser}>Criar</Button>
+                <Button variant="primary" buttonClick={saveUser}>Criar</Button>
             )}
         </div>
     )

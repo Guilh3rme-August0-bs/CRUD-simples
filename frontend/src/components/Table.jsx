@@ -33,8 +33,7 @@ export const Table = ({ data = [], maxHeight = '50vh', selectedId, setSelectedId
                             ) : (
                                 data.map((userData) => (
                                     <TableRow usuario={userData} key={userData._id} 
-                                    rowClick={() => {setSelectedId(userData._id)
-                                    }} selectedId={selectedId} />
+                                    rowClick={() => {setSelectedId(userData._id)}} selectedId={selectedId} />
                                 ))
                             )}
                         </tbody>

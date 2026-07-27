@@ -43,7 +43,7 @@ export const Home = () => {
                         setInputValue(e.target.value)
                     }}
                 />
-                <Table data={usuarios} selectedId={selectedId} setSelectedId={setSelectedId} />
+                <Table data={usuarios} selectedId={selectedId} setSelectedId={setSelectedId}/>
             </div>
         </div>
     )
