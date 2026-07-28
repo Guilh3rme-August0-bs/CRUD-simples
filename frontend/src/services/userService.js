@@ -78,3 +78,21 @@ export async function editUser({ id, name, email, age, phone }) {
         return false
     }
 }
+
+export async function deleteUser({ id }) {
+    try {
+        await fetch(`${url}/delete`, {
+            method: "DELETE",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                id
+            })
+        })
+        return true
+    } catch (error) {
+        console.log(error)
+        return false
+    }
+}

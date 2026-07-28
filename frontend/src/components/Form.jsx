@@ -4,7 +4,7 @@ import { CircleX } from 'lucide-react';
 import { createUser, editUser } from "../services/userService"
 import { useEffect, useState } from "react"
 
-export const Form = ({ updateValueFunction, isEditing, setIsEditing, selectedUser }) => {
+export const Form = ({ updateValueFunction, isEditing, setIsEditing, setDisabled, selectedUser }) => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [age, setAge] = useState('')
@@ -42,7 +42,7 @@ export const Form = ({ updateValueFunction, isEditing, setIsEditing, selectedUse
             name,
             email,
             age,
-            phone: phone.replace(/\D/g, '')
+            phone
         })
 
         if (!created) return
@@ -75,6 +75,7 @@ export const Form = ({ updateValueFunction, isEditing, setIsEditing, selectedUse
         setAge('')
         setPhone('')
         setIsEditing(false)
+        setDisabled(false)
 
         if (updateValueFunction) {
             await updateValueFunction()
@@ -90,7 +91,11 @@ export const Form = ({ updateValueFunction, isEditing, setIsEditing, selectedUse
             {isEditing ? (
                 <div className="flex flex-row items-center">
                     <Button variant="primary" buttonClick={updateUser}>Atualizar</Button>
-                    <Button variant="secondary" buttonClick={() => { setIsEditing(false) }}>
+                    <Button variant="secondary"
+                        buttonClick={() => {
+                            setIsEditing(false)
+                            setDisabled(false)
+                        }}>
                         <CircleX />
                     </Button>
                 </div>

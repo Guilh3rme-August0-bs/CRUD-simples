@@ -83,15 +83,15 @@ app.patch('/update', async (req, res) => {
 
 app.delete('/delete', async (req, res) => {
 
-    const idsArray = req.body.ids;
-    const namesQuery = User.find({ _id: { $in: idsArray } }).select('name -_id');
+    const idArray = req.body.id;
+    const namesQuery = User.find({ _id: { $in: idArray } }).select('name -_id');
     const namesArray = await namesQuery.exec()
 
     try {
-        await User.deleteMany({ _id: { $in: idsArray } })
+        await User.deleteMany({ _id: { $in: idArray } })
         const message = () => {
             let completeLog = { "deleted": [] };
-            for (let i = 0; i < idsArray.length; i++) {
+            for (let i = 0; i < idArray.length; i++) {
                 let line = namesArray[i].name
                 completeLog.deleted.push(line)
             }

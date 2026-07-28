@@ -2,7 +2,7 @@ import { SquarePen, Trash2 } from 'lucide-react';
 import { useState } from 'react';
 import { TableRow } from './TableRow';
 
-export const Table = ({ data = [], maxHeight = '50vh', selectedId, setSelectedId }) => {
+export const Table = ({ data = [], maxHeight = '50vh', selectedId, setSelectedId, switchDelete, switchEdit }) => {
 
     const hasData = Array.isArray(data) && data.length > 0
 
@@ -32,8 +32,15 @@ export const Table = ({ data = [], maxHeight = '50vh', selectedId, setSelectedId
                                 </tr>
                             ) : (
                                 data.map((userData) => (
-                                    <TableRow usuario={userData} key={userData._id} 
-                                    rowClick={() => {setSelectedId(userData._id)}} selectedId={selectedId} />
+                                    <TableRow usuario={userData} key={userData._id}
+                                        handleEdit={() => {
+                                            setSelectedId(userData._id)
+                                            switchEdit()
+                                        }} selectedId={selectedId}
+                                        handleDelete={() => {
+                                            setSelectedId(userData._id)
+                                            switchDelete()
+                                        }} selectedId={selectedId} />
                                 ))
                             )}
                         </tbody>

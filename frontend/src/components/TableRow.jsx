@@ -1,7 +1,7 @@
 import { SquarePen, Trash2 } from 'lucide-react';
 import { useState } from 'react';
 
-export const TableRow = ({ usuario, rowClick, selectedId }) => {
+export const TableRow = ({ usuario, handleEdit, handleDelete, selectedId }) => {
 
     return (
         <tr className={selectedId === usuario._id ? "bg-[#17b14f] text-[#ffffff]" : "hover:bg-gray-50 text-[#000000]"}>
@@ -11,10 +11,11 @@ export const TableRow = ({ usuario, rowClick, selectedId }) => {
             <td className="px-6 py-4 text-base">{usuario.age}</td>
             <td className="px-6 py-4 text-base">{usuario.phone}</td>
             <td className="px-6 py-4 text-base cursor-pointer"
-                onClick={rowClick}>
+                onClick={handleEdit}>
                 <SquarePen />
             </td>
-            <td className="px-6 py-4 text-base cursor-pointer">
+            <td className="px-6 py-4 text-base cursor-pointer"
+                onClick={handleDelete}>
                 <Trash2 color="#f24a4a" />
             </td>
         </tr>

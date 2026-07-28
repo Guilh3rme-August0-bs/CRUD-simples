@@ -1,7 +1,7 @@
 import { Search } from 'lucide-react'
 import { Button } from './Button'
 
-export const SearchBar = ({ searchTerm, inputChange }) => {
+export const SearchBar = ({ searchTerm, inputChange, inputDisabled }) => {
 
     return (
         <div className="flex justify-center items-center gap-4 mb-6 mt-6 w-full p-6 overflow-x-auto rounded-lg border border-gray-200 shadow-sm">
@@ -12,6 +12,7 @@ export const SearchBar = ({ searchTerm, inputChange }) => {
                 type="text"
                 value={searchTerm}
                 onChange={inputChange}
+                disabled={inputDisabled}
             />
         </div>
     )
