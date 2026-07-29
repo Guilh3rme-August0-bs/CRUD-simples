@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import ora from 'ora';
 import User from './models/User.js';
+import defaultData from "./data/reset.json" with { type: 'json' };
 
 dotenv.config();
 
@@ -14,15 +15,29 @@ app.use(cors())
 app.use(express.json());
 
 const conectarBanco = async () => {
-
+    const spinner = ora('Conectando ao banco...').start()
     try {
-        const spinner = ora('Conectando ao banco...').start()
         await mongoose.connect(process.env.DATABASE_URI)
         spinner.succeed('Conectado ao banco!')
 
-    } catch (error) { console.log(`Ocorreu um erro de conexão: ${error}`) }
+    } catch (error) { 
+        spinner.fail(`Ocorreu um erro de conexão: ${error}`) }
 };
 
+const resetDb = async () => {
+    try {
+        await User.deleteMany({})
+        await User.insertMany(defaultData)
+    } catch (error) {
+        console.log(`Ocorreu um erro ao resetar o banco: ${error}`)
+    }
+}
+
+const oneHourInMs = 60 * 60 * 1000;
+
+setInterval(async () => {
+    await resetDb();
+}, oneHourInMs);
 
 app.get('/', (req, res) => {
     res.send('O servidor com mongoose está funcionando!')
