@@ -88,17 +88,8 @@ app.delete('/delete', async (req, res) => {
     const namesArray = await namesQuery.exec()
 
     try {
-        await User.deleteMany({ _id: { $in: idArray } })
-        const message = () => {
-            let completeLog = { "deleted": [] };
-            for (let i = 0; i < idArray.length; i++) {
-                let line = namesArray[i].name
-                completeLog.deleted.push(line)
-            }
-            return completeLog
-        }
-
-        res.send(message())
+        await User.deleteOne({ _id: idArray })
+        res.send(`Usuário ${namesArray[0].name} excluído`)
 
     } catch (error) {
         res.send(`Erro ao deletar usuários: ${error}`)

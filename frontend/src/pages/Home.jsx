@@ -66,8 +66,11 @@ export const Home = () => {
 
     return (
         <div className="flex justify-center">
-            <div className="min-w-20">
-                <Form updateValueFunction={refreshUsers} isEditing={isEditing} setIsEditing={setIsEditing} setDisabled={setDisabled} selectedUser={selectedUser} />
+            <div className="min-w-100">
+                <Form updateValueFunction={refreshUsers} 
+                isEditing={isEditing} setIsEditing={setIsEditing} 
+                setDisabled={setDisabled} selectedUser={selectedUser} 
+                setSelectedId={setSelectedId}/>
                 <SearchBar
                     searchTerm={inputValue}
                     inputChange={(e) => {

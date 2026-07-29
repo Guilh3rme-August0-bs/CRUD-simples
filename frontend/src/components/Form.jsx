@@ -4,7 +4,7 @@ import { CircleX } from 'lucide-react';
 import { createUser, editUser } from "../services/userService"
 import { useEffect, useState } from "react"
 
-export const Form = ({ updateValueFunction, isEditing, setIsEditing, setDisabled, selectedUser }) => {
+export const Form = ({ updateValueFunction, isEditing, setIsEditing, selectedUser, setDisabled, setSelectedId }) => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [age, setAge] = useState('')
@@ -32,9 +32,18 @@ export const Form = ({ updateValueFunction, isEditing, setIsEditing, setDisabled
         if (digits.length <= 10) return `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`
         return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`
     }
-
+    
     const handlePhoneChange = (e) => {
         setPhone(formatPhone(e.target.value))
+    }
+
+    const formatAge = (value) => {
+        if (value.length > 2) {
+            return value = value.slice(0, 2);
+        }
+    }
+    const handleAgeChange = (e) => {
+        setAge(formatAge(e.target.value))
     }
 
     const saveUser = async () => {
@@ -76,6 +85,7 @@ export const Form = ({ updateValueFunction, isEditing, setIsEditing, setDisabled
         setPhone('')
         setIsEditing(false)
         setDisabled(false)
+        setSelectedId(null)
 
         if (updateValueFunction) {
             await updateValueFunction()
@@ -86,7 +96,7 @@ export const Form = ({ updateValueFunction, isEditing, setIsEditing, setDisabled
         <div className="max-[800px]: flex flex-col p-4 min-[700px]:flex-row mb-10 mt-10 justify-center items-center gap-1 overflow-x-auto rounded-lg border border-gray-200 shadow-sm">
             <Input inputName="Nome" inputType="text" inputValue={name} inputChange={(e) => setName(e.target.value)} />
             <Input inputName="E-mail" inputType="text" inputValue={email} inputChange={(e) => setEmail(e.target.value)} />
-            <Input inputName="Idade" inputType="number" inputValue={age} inputChange={(e) => setAge(e.target.value)} />
+            <Input inputName="Idade" inputType="number" inputValue={age} inputChange={handleAgeChange} />
             <Input inputName="N° de telefone" inputType="tel" inputValue={phone} inputChange={handlePhoneChange} />
             {isEditing ? (
                 <div className="flex flex-row items-center">
@@ -95,12 +105,15 @@ export const Form = ({ updateValueFunction, isEditing, setIsEditing, setDisabled
                         buttonClick={() => {
                             setIsEditing(false)
                             setDisabled(false)
+                            setSelectedId(null)
                         }}>
                         <CircleX />
                     </Button>
                 </div>
             ) : (
-                <Button variant="primary" buttonClick={saveUser}>Criar</Button>
+                <div className="flex flex-row w-48 items-center">
+                    <Button variant="primary" buttonClick={saveUser}>Criar</Button>
+                </div>
             )}
         </div>
     )
