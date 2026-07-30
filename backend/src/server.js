@@ -20,8 +20,9 @@ const conectarBanco = async () => {
         await mongoose.connect(process.env.DATABASE_URI)
         spinner.succeed('Conectado ao banco!')
 
-    } catch (error) { 
-        spinner.fail(`Ocorreu um erro de conexão: ${error}`) }
+    } catch (error) {
+        spinner.fail(`Ocorreu um erro de conexão: ${error}`)
+    }
 };
 
 const resetDb = async () => {
@@ -60,7 +61,7 @@ app.get('/search', async (req, res) => {
     try {
         const results = await search.exec()
         results.length === 0
-            ? res.send({"erro": "nenhum resultado encontrado"})
+            ? res.send({ "erro": "nenhum resultado encontrado" })
             : res.json(results)
 
     } catch (error) { `Erro ao buscar nome: ${error}` }
@@ -74,7 +75,6 @@ app.post('/insert', async (req, res) => {
 
     try {
         if (emailExistente.length === 0) {
-
             const newUser = await User.create(req.body)
             await newUser.save()
             res.json(`Usuario ${req.body.name} cadastrado!`)
@@ -83,16 +83,25 @@ app.post('/insert', async (req, res) => {
         }
 
     } catch (error) {
-        res.send(`Erro ao criar novo usuário: ${error.message}`)
+        res.status(400).json(error.message)
     }
 });
 
 app.patch('/update', async (req, res) => {
     try {
-        await User.findByIdAndUpdate(req.body.id, req.body.data);
-        res.send('Alterações feitas!')
+        const userWithSameEmail = await User.findOne({
+            email: req.body.data.email,
+            _id: { $ne: req.body.id }
+        });
+
+        if (!userWithSameEmail || userWithSameEmail.length === null) {
+            await User.findByIdAndUpdate(req.body.id, req.body.data);
+            res.send('Alterações feitas!');
+        } else {
+            throw new Error('E-mail já cadastrado!');
+        }
     } catch (error) {
-        res.send(`Erro ao atualizar: ${error}`)
+        res.status(400).json(error.message);
     }
 })
 

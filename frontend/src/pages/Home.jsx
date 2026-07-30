@@ -32,7 +32,6 @@ export const Home = () => {
         const result = await deleteUser({ id: id })
         if (result) {
             await carregarDados(inputValue)
-            alert("Usuário excluído com sucesso!")
         } else {
             alert("Erro ao excluir usuário!")
         }

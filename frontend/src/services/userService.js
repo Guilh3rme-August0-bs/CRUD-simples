@@ -23,23 +23,30 @@ export async function createUser({ name, email, age, phone }) {
             return false
         }
 
-        await fetch(`${url}/insert`, {
+        const response = await fetch(`${url}/insert`, {
             method: "POST",
             headers: {
                 "Content-type": "application/json"
             },
             body: JSON.stringify({
-                name,
-                email,
-                age,
-                phone
+                name: name,
+                email: email,
+                age: age,
+                phone: phone
             })
         })
 
-        alert(`Usuário ${name} cadastrado!`)
-        return true
+        if (!response.ok) {
+            const errorData = await response.text()
+            throw new Error(errorData)
+        }
+
+        else {
+            alert(await response.text())
+            return true
+        }
     } catch (error) {
-        console.log(error)
+        alert(`${error.message}`)
         return false
     }
 }
@@ -55,7 +62,7 @@ export async function editUser({ id, name, email, age, phone }) {
             return false
         }
 
-        await fetch(`${url}/update`, {
+        const response = await fetch(`${url}/update`, {
             method: "PATCH",
             headers: {
                 "Content-type": "application/json"
@@ -71,17 +78,22 @@ export async function editUser({ id, name, email, age, phone }) {
             })
         })
 
-        alert(`Usuário atualizado!`)
+        if (!response.ok) {
+            const errorData = await response.text()
+            throw new Error(errorData)
+        }
+
+        alert(await response.text())
         return true
     } catch (error) {
-        console.log(error)
+        alert(`${error.message}`)
         return false
     }
 }
 
 export async function deleteUser({ id }) {
     try {
-        await fetch(`${url}/delete`, {
+        const response = await fetch(`${url}/delete`, {
             method: "DELETE",
             headers: {
                 "Content-type": "application/json"
@@ -90,9 +102,16 @@ export async function deleteUser({ id }) {
                 id
             })
         })
+
+        if (!response.ok) {
+            const errorData = await response.text()
+            throw new Error(errorData)
+        }
+
+        alert(await response.text())
         return true
     } catch (error) {
-        console.log(error)
+        alert(`${error.message}`)
         return false
     }
 }

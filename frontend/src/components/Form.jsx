@@ -39,8 +39,9 @@ export const Form = ({ updateValueFunction, isEditing, setIsEditing, selectedUse
 
     const formatAge = (value) => {
         if (value.length > 2) {
-            return value = value.slice(0, 2);
+            value = value.slice(0, 2);
         }
+        return value;
     }
     const handleAgeChange = (e) => {
         setAge(formatAge(e.target.value))
