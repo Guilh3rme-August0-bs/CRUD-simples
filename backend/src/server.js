@@ -48,6 +48,8 @@ app.get('/search', async (req, res) => {
 
     const escapeRegex = (value) => { return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') }
     const term = escapeRegex(req.query.term || '')
+    const limit = req.query.limit
+    const page = req.query.page
 
     const search = User.find({
         //'$or' faz com que o valor buscado satisfaça pelo menos uma dos campos
@@ -58,6 +60,9 @@ app.get('/search', async (req, res) => {
             { age: { $regex: term, $options: 'i' } }
         ]
     }, 'email name phone age')
+    .sort({ name: 1, _id: 1 })
+    .skip(page * limit)
+    .limit(limit)
     try {
         const results = await search.exec()
         results.length === 0

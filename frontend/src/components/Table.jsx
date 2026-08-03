@@ -18,8 +18,8 @@ export const Table = ({ data = [], maxHeight = '50vh', selectedId, setSelectedId
                                 <th className="px-6 py-3 font-sans font-semibold text-white text-lg">E-mail</th>
                                 <th className="px-6 py-3 font-sans font-semibold text-white text-lg">Idade</th>
                                 <th className="px-6 py-3 font-sans font-semibold text-white text-lg">N° de Telefone</th>
-                                <th className="px-6 py-3 font-sans font-semibold text-white text-lg"></th>
-                                <th className="px-6 py-3 font-sans font-semibold text-white text-lg"></th>
+                                <th className="px-6 py-3 font-sans font-semibold text-white"></th>
+                                <th className="px-6 py-3 font-sans font-semibold text-white"></th>
                             </tr>
                         </thead>
 
