@@ -18,7 +18,7 @@ export const Home = () => {
     const [limit, setLimit] = useState(10)
 
     async function carregarDados(term) {
-        const dados = await getData({ term, page, limit})
+        const dados = await getData({ term, page, limit })
         setUsuarios(dados)
     }
 
@@ -29,72 +29,72 @@ export const Home = () => {
 
     useEffect(() => {
         setPage(1)
-    }, [inputValue])
+    }, [inputValue, limit])
 
-        const deleteUserById = async (id) => {
-            setIsEditing(false)
-            let confirmDelete = window.confirm("Deseja excluir este usuário?")
-            if (!confirmDelete) return
+    const deleteUserById = async (id) => {
+        setIsEditing(false)
+        let confirmDelete = window.confirm("Deseja excluir este usuário?")
+        if (!confirmDelete) return
 
-            const result = await deleteUser({ id: id })
-            if (result) {
-                await carregarDados(inputValue)
-            } else {
-                alert("Erro ao excluir usuário!")
-            }
-
-        }
-
-        useEffect(() => {
-            if (selectedId) {
-                const usuarioSelecionado = usuarios.find(usuario => usuario._id === selectedId)
-
-                switch (action) {
-                    case "update":
-                        setIsEditing(true)
-                        setDisabled(true)
-                        break
-                    case "delete":
-                        deleteUserById(selectedId)
-                        break
-                    default:
-                        break
-                }
-                setSelectedUser(usuarioSelecionado)
-                setAction('')
-
-            }
-        }, [selectedId, action, usuarios])
-
-        const refreshUsers = async () => {
+        const result = await deleteUser({ id: id })
+        if (result) {
             await carregarDados(inputValue)
+        } else {
+            alert("Erro ao excluir usuário!")
         }
 
-        const nextPageLength = async () => {
-            nextPage = page + 1
-            const data = await getData({ term, nextPage, limit })
-            return data.length
-        }
-
-        return (
-            <div className="flex justify-center">
-                <div className="min-w-100">
-                    <Form updateValueFunction={refreshUsers}
-                        isEditing={isEditing} setIsEditing={setIsEditing}
-                        setDisabled={setDisabled} selectedUser={selectedUser}
-                        setSelectedId={setSelectedId} />
-                    <SearchBar
-                        searchTerm={inputValue}
-                        inputChange={(e) => {
-                            setInputValue(e.target.value)
-                        }}
-                        inputDisabled={disabled}
-                    />
-                    <Table data={usuarios} selectedId={selectedId} setSelectedId={setSelectedId}
-                        switchDelete={() => { setAction('delete') }}
-                        switchEdit={() => { setAction('update') }} />
-                    <PageControl page={page} setPage={setPage} limit={limit} setLimit={setLimit} nextpageLength={nextPageLength} />
-                </div>
-            </div>
-        )
     }
+
+    useEffect(() => {
+        if (selectedId) {
+            const usuarioSelecionado = usuarios.find(usuario => usuario._id === selectedId)
+
+            switch (action) {
+                case "update":
+                    setIsEditing(true)
+                    setDisabled(true)
+                    break
+                case "delete":
+                    deleteUserById(selectedId)
+                    break
+                default:
+                    break
+            }
+            setSelectedUser(usuarioSelecionado)
+            setAction('')
+
+        }
+    }, [selectedId, action, usuarios])
+
+    const refreshUsers = async () => {
+        await carregarDados(inputValue)
+    }
+
+    const nextPageLength = async () => {
+        const nextPage = page + 1
+        const data = await getData({ term: inputValue, page: nextPage, limit: limit })
+        return data.length
+    }
+
+    return (
+        <div className="flex justify-center">
+            <div className="min-w-100">
+                <Form updateValueFunction={refreshUsers}
+                    isEditing={isEditing} setIsEditing={setIsEditing}
+                    setDisabled={setDisabled} selectedUser={selectedUser}
+                    setSelectedId={setSelectedId} />
+                <SearchBar
+                    searchTerm={inputValue}
+                    inputChange={(e) => {
+                        setInputValue(e.target.value)
+                    }}
+                    inputDisabled={disabled}
+                />
+                <Table data={usuarios} selectedId={selectedId} setSelectedId={setSelectedId}
+                    switchDelete={() => { setAction('delete') }}
+                    switchEdit={() => { setAction('update') }} />
+                <PageControl page={page} setPage={setPage} limit={limit} setLimit={setLimit} nextPageLength={nextPageLength} disabledControls={disabled}/>
+            </div>
+        </div>
+    )
+}

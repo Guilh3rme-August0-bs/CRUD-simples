@@ -25,7 +25,7 @@ export const Table = ({ data = [], maxHeight = '50vh', selectedId, setSelectedId
 
                         <tbody>
                             {!hasData ? (
-                                <tr className="hover:bg-gray-50 transition-colors">
+                                <tr>
                                     <td colSpan={5} className="px-6 py-4 text-base text-center">
                                         Sem dados
                                     </td>
