@@ -1,36 +1,36 @@
 [
     {
-        "email": "ronan@email",
+        "email": "ronan@hotmail.com",
         "name": "Ronan Silva",
         "phone": "(47) 7689-3475",
         "age": "36"
     },
     {
-        "email": "john237@email",
+        "email": "john237@hotmail.com",
         "name": "John Schneider",
         "phone": "(87) 9559-5689",
         "age": "75"
     },
     {
-        "email": "marcelo@email",
+        "email": "marcelo@hotmail.com",
         "name": "Marcelo Lobo",
         "phone": "(92) 6876-7846",
         "age": "57"
     },
     {
-        "email": "alexandre1970@email",
+        "email": "alexandre1970@hotmail.com",
         "name": "Alexandre Brando",
         "phone": "(11) 66512-7811",
         "age": "47"
     },
     {
-        "email": "angelina2007@email",
+        "email": "angelina2007@hotmail.com",
         "name": "Angelina Lacerda Toledo",
         "phone": "(19) 2007-1999",
         "age": "20"
     },
     {
-        "email": "bruno@email",
+        "email": "bruno@hotmail.com",
         "name": "Bruno Kelvin Dias",
         "phone": "(88) 31701-4295",
         "age": "17"
@@ -48,7 +48,7 @@
         "phone": "(77) 77777-7777"
     },
     {
-        "email": "oreo98@mail",
+        "email": "oreo98@gmail.com",
         "name": "Oliver Carvalho",
         "age": "33",
         "phone": "(37) 83846-7768"
@@ -84,19 +84,19 @@
         "phone": "(08) 1985-0808"
     },
     {
-        "email": "martinezluiz@gamil.com",
+        "email": "martinezluiz@gmail.com",
         "name": "Luiz Martinez",
         "age": "61",
         "phone": "(56) 74574-8758"
     },
     {
-        "email": "franco@mail.com.net",
+        "email": "franco@gmail.com.com.net",
         "name": "Oswaldo Franco",
         "age": "73",
         "phone": "(75) 7567-4645"
     },
     {
-        "email": "wambert000@gamil.com",
+        "email": "wambert000@gmail.com",
         "name": "Renato Wambert",
         "age": "45",
         "phone": "(58) 90083-4792"
@@ -114,19 +114,19 @@
         "phone": "(20) 43843-9857"
     },
     {
-        "email": "limarenato@email.com",
+        "email": "limarenato@hotmail.com",
         "name": "Renato Lima",
         "age": "36",
         "phone": "(55) 33856-7585"
     },
     {
-        "email": "parlopablo@gmail",
-        "name": "Pablo",
+        "email": "parlopablo@gmail.com",
+        "name": "Pablo Parlo",
         "phone": "(55) 65439-8378",
         "age": "32"
     },
     {
-        "email": "taylordennis@gamil.com",
+        "email": "taylordennis@gmail.com",
         "name": "Dennis Taylor",
         "phone": "(55) 79922-3377",
         "age": "25"
@@ -144,13 +144,13 @@
         "age": "96"
     },
     {
-        "email": "oliverdonald@gamil.com",
+        "email": "oliverdonald@gmail.com",
         "name": "Oliver Donald",
         "phone": "(73) 22884-7811",
         "age": "34"
     },
     {
-        "email": "vercetti@gamil.com",
+        "email": "vercetti@gmail.com",
         "name": "Tommy Váz",
         "phone": "(86) 20021-9861",
         "age": "33"
@@ -168,7 +168,7 @@
         "age": "23"
     },
     {
-        "email": "betogomes@gamila.com",
+        "email": "betogomes@gmaila.com",
         "name": "Roberto Gomes",
         "phone": "(20) 14210-1409",
         "age": "85"
@@ -180,13 +180,13 @@
         "age": "19"
     },
     {
-        "email": "kleinmavismiss@gmail",
+        "email": "kleinmavismiss@gmail.com",
         "name": "Mavis Klein",
         "phone": "(66) 64178-2109",
-        "age": "118"
+        "age": "18"
     },
     {
-        "email": "lorenzdan@mail",
+        "email": "lorenzdan@gmail.com",
         "name": "Daniel Lourenço",
         "phone": "(33) 49023-8475",
         "age": "16"
@@ -216,7 +216,7 @@
         "age": "47"
     },
     {
-        "email": "dennisagostin@mail",
+        "email": "dennisagostin@gmail.com",
         "name": "Agostín Dennis",
         "phone": "(24) 36675-6756",
         "age": "26"
@@ -240,7 +240,7 @@
         "age": "39"
     },
     {
-        "email": "montagefire@gmail",
+        "email": "montagefire@gmail.com",
         "name": "Giulian Montag",
         "phone": "(95) 1587-6543",
         "age": "27"
@@ -252,13 +252,13 @@
         "age": "65"
     },
     {
-        "email": "bonilla@mail.com",
+        "email": "bonilla@gmail.com.com",
         "name": "Hector Bonilla",
         "phone": "(43) 46543-5647",
         "age": "28"
     },
     {
-        "email": "vilazaedgar@mail",
+        "email": "vilazaedgar@gmail.com",
         "name": "Edgar Vilaza",
         "phone": "(34) 64576-6787",
         "age": "75"

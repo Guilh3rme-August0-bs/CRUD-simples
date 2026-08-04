@@ -93,7 +93,15 @@ export const Home = () => {
                 <Table data={usuarios} selectedId={selectedId} setSelectedId={setSelectedId}
                     switchDelete={() => { setAction('delete') }}
                     switchEdit={() => { setAction('update') }} />
-                <PageControl page={page} setPage={setPage} limit={limit} setLimit={setLimit} nextPageLength={nextPageLength} disabledControls={disabled}/>
+                <PageControl
+                    page={page}
+                    setPage={setPage}
+                    limit={limit}
+                    setLimit={setLimit}
+                    nextPageLength={nextPageLength}
+                    disabledControls={disabled}
+                    searchTerm={inputValue}
+                />
             </div>
         </div>
     )

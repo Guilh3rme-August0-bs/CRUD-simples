@@ -2,14 +2,14 @@ import { SquarePen, Trash2 } from 'lucide-react';
 import { useState } from 'react';
 import { TableRow } from './TableRow';
 
-export const Table = ({ data = [], maxHeight = '50vh', selectedId, setSelectedId, switchDelete, switchEdit }) => {
+export const Table = ({ data = [], selectedId, setSelectedId, switchDelete, switchEdit }) => {
 
     const hasData = Array.isArray(data) && data.length > 0
 
     return (
         <div className="w-full overflow-hidden rounded-lg border border-gray-200 shadow-sm">
             <div className="overflow-x-auto">
-                <div className="overflow-y-auto" style={{ maxHeight }}>
+                <div className="overflow-y-auto max-h-[50vh]">
                     <table className="w-full text-left text-sm text-gray-500 border-collapse">
                         <thead className="sticky top-0 z-10 bg-[#1d7b4b] text-xs text-white font-semibold">
                             <tr>

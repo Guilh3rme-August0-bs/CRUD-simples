@@ -9,6 +9,8 @@ export const Form = ({ updateValueFunction, isEditing, setIsEditing, selectedUse
     const [email, setEmail] = useState('')
     const [age, setAge] = useState('')
     const [phone, setPhone] = useState('')
+    const [emailRequired, setEmailRequired] = useState(false)
+    const [nameRequired, setNameRequired] = useState(false)
 
     useEffect(() => {
         if (isEditing && selectedUser) {
@@ -94,11 +96,11 @@ export const Form = ({ updateValueFunction, isEditing, setIsEditing, selectedUse
     }
 
     return (
-        <div className="max-[800px]: flex flex-col p-4 min-[700px]:flex-row mb-10 mt-10 justify-center items-center gap-1 overflow-x-auto rounded-lg border border-gray-200 shadow-sm">
-            <Input inputName="Nome" inputType="text" inputValue={name} inputChange={(e) => setName(e.target.value)} />
-            <Input inputName="E-mail" inputType="text" inputValue={email} inputChange={(e) => setEmail(e.target.value)} />
-            <Input inputName="Idade" inputType="number" inputValue={age} inputChange={handleAgeChange} />
-            <Input inputName="N° de telefone" inputType="tel" inputValue={phone} inputChange={handlePhoneChange} />
+        <div className="flex flex-col items-center p-4 min-[700px]:flex-row min-[700px]:items-start mb-10 mt-10 gap-1 overflow-x-auto rounded-lg border border-gray-200 shadow-sm">
+            <Input inputName="Nome" inputType="text" inputValue={name} inputClick={() => setNameRequired(true)} inputChange={(e) => setName(e.target.value)} required={nameRequired} />
+            <Input inputName="E-mail" inputType="text" inputValue={email} inputClick={() => setEmailRequired(true)} inputChange={(e) => setEmail(e.target.value)}  required={emailRequired}/>
+            <Input inputName="Idade" inputType="number" inputValue={age} inputChange={handleAgeChange} required={false} />
+            <Input inputName="N° de telefone" inputType="tel" inputValue={phone} inputChange={handlePhoneChange} required={false} />
             {isEditing ? (
                 <div className="flex flex-row items-center">
                     <Button variant="primary" buttonClick={updateUser}>Atualizar</Button>
@@ -112,7 +114,7 @@ export const Form = ({ updateValueFunction, isEditing, setIsEditing, selectedUse
                     </Button>
                 </div>
             ) : (
-                <div className="flex flex-row w-48 items-center">
+                <div className="flex flex-row w-48">
                     <Button variant="primary" buttonClick={saveUser}>Criar</Button>
                 </div>
             )}
