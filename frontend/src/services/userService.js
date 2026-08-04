@@ -1,4 +1,4 @@
-const url = `http://localhost:3000`
+const url = `https://crud-simples-dzeq.onrender.com`
 
 export async function getData({ term, page, limit }) {
     const response = await fetch(`${url}/search?term=${encodeURIComponent(term ?? "")}&page=${page - 1}&limit=${limit}`)
