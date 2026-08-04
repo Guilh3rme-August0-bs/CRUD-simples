@@ -40,7 +40,7 @@ setInterval(async () => {
     await resetDb();
 }, oneHourInMs);
 
-app.get('/', (req, res) => {
+app.get('/health', (req, res) => {
     res.send('O servidor com mongoose está funcionando!')
 });
 
