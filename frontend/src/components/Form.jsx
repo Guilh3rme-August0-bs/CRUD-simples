@@ -96,7 +96,7 @@ export const Form = ({ updateValueFunction, isEditing, setIsEditing, selectedUse
     }
 
     return (
-        <div className="flex flex-col items-center p-4 min-[700px]:flex-row min-[700px]:items-start mb-10 mt-10 gap-1 overflow-x-auto rounded-lg border border-gray-200 shadow-sm">
+        <div className="flex flex-col items-center p-4 max-[700px]:m-5 min-[700px]:flex-row min-[700px]:items-start mb-10 mt-10 mr-0 ml-0 gap-1 overflow-x-auto rounded-lg border border-gray-200 shadow-sm">
             <Input inputName="Nome" inputType="text" inputValue={name} inputClick={() => setNameRequired(true)} inputChange={(e) => setName(e.target.value)} required={nameRequired} />
             <Input inputName="E-mail" inputType="text" inputValue={email} inputClick={() => setEmailRequired(true)} inputChange={(e) => setEmail(e.target.value)}  required={emailRequired}/>
             <Input inputName="Idade" inputType="number" inputValue={age} inputChange={handleAgeChange} required={false} />
@@ -114,7 +114,7 @@ export const Form = ({ updateValueFunction, isEditing, setIsEditing, selectedUse
                     </Button>
                 </div>
             ) : (
-                <div className="flex flex-row w-48">
+                <div className="flex flex-row justify-center w-48">
                     <Button variant="primary" buttonClick={saveUser}>Criar</Button>
                 </div>
             )}
