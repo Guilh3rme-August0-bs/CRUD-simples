@@ -12,7 +12,7 @@ Aplicação **full stack** para gerenciamento de usuários, com foco em integra�
 
 ## Acesse o projeto
 
-🔗 **Aplicação online:** https://crud-simples.gsilva12401321.workers.dev
+🔗 **Aplicação online:** https://user-management-crud.gsilva12401321.workers.dev/
 🔗 **API:** https://crud-simples-dzeq.onrender.com
 
 > Projeto público — não requer autenticação.
