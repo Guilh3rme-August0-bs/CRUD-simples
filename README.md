@@ -1,4 +1,4 @@
-# 🧾 CRUD simples para Gerenciamento de Usuários
+# CRUD simples para Gerenciamento de Usuários
 
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge\&logo=react\&logoColor=61DAFB)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge\&logo=nodedotjs\&logoColor=white)
@@ -10,7 +10,7 @@ Aplicação **full stack** para gerenciamento de usuários, com foco em integra�
 
 ---
 
-## 🚀 Acesse o projeto
+## Acesse o projeto
 
 🔗 **Aplicação online:** https://crud-simples.gsilva12401321.workers.dev
 🔗 **API:** https://crud-simples-dzeq.onrender.com
@@ -19,23 +19,23 @@ Aplicação **full stack** para gerenciamento de usuários, com foco em integra�
 
 ---
 
-## 📸 Interface da aplicação
+## Interface da aplicação
 
-### 📋 Listagem + paginação de usuários
+### Listagem + paginação de usuários
 
 <img width="943" height="577" alt="image" src="https://github.com/user-attachments/assets/1c0ec657-83d6-425b-96b9-50b0f8eaf9b4" />
 
-### 🔍 Busca em tempo real
+### Busca em tempo real
 
 <img width="954" height="466" alt="image" src="https://github.com/user-attachments/assets/bb91d386-8d0c-4782-b54f-1889b2620455" />
 
-### ✏️ Edição de usuário
+### Edição de usuário
 
 <img width="934" height="565" alt="image" src="https://github.com/user-attachments/assets/f7b4289e-4b49-4667-bd43-22c028031b9f" />
 
 ---
 
-## 📌 Sobre o projeto
+## Sobre o projeto
 
 Sistema CRUD completo (Create, Read, Update, Delete) para gerenciamento de usuários, desenvolvido como aplicação de **página única (SPA)**.
 
@@ -43,19 +43,19 @@ A aplicação utiliza uma arquitetura desacoplada, com frontend e backend indepe
 
 ---
 
-## ⚙️ Funcionalidades
+## Funcionalidades
 
-* ✅ Cadastro de usuários
-* 📋 Listagem em tabela
-* 🔍 Busca dinâmica em tempo real
-* ✏️ Edição de dados
-* ❌ Exclusão de usuários
-* 📄 Paginação dos registros
-* 🔄 Reset automático do banco a cada 1 hora
+* Cadastro de usuários
+* Listagem em tabela
+* Busca dinâmica em tempo real
+* Edição de dados
+* Exclusão de usuários
+* Paginação dos registros
+* Reset automático do banco a cada 1 hora
 
 ---
 
-## 🧠 Destaques técnicos
+## Destaques técnicos
 
 * Arquitetura **full stack desacoplada**
 * Aplicação **SPA (Single Page Application)**
@@ -67,7 +67,7 @@ A aplicação utiliza uma arquitetura desacoplada, com frontend e backend indepe
 
 ---
 
-## 🛠️ Tecnologias utilizadas
+## Tecnologias utilizadas
 
 ### Frontend
 
@@ -88,10 +88,10 @@ A aplicação utiliza uma arquitetura desacoplada, com frontend e backend indepe
 
 ---
 
-## 👨‍💻 Autor
+## Autor
 
 Desenvolvido por **Guilherme Augusto**
-📌 Desenvolvedor Full Stack
+Desenvolvedor Full Stack
 
 ---
 
